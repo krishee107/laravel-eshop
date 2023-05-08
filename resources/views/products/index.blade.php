@@ -9,29 +9,38 @@
 <body>
         <h1>Productos</h1>
 
-        <div class="table-responsive">
+        @if (empty($products))
+            <div class="alert alert-warning">La lista de productos está vacía</div>
+        @else
+            <div class="table-responsive">
             <table class="table table-striped">
                 <thead class="thead-light">
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
                         <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Jabón</td>
-                        <td>Jabón de manos</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Champú</td>
-                        <td>El mejor champú</td>
-                    </tr>
+                    @foreach ($products as $product)
+                        <tr>
+                            <td>{{$product -> id}}</td>
+                            <td>{{$product -> title }}</td>
+                            <td>{{$product -> description}}</td>
+                            <td>{{$product -> precio}}</td>
+                            <td>{{$product -> stock}}</td>
+                            <td>{{$product -> status}}</td>
+                        </tr>
+                    @endforeach
+                    
                 </tbody>
             </table>
         </div>
+        @endif
+        
         
 </body>
 </html>

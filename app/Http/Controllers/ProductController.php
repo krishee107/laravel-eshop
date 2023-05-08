@@ -11,7 +11,7 @@ class ProductController extends Controller
         $products = Product::all();
         //dd($products); --> Para ver los datos que se estan pasando a la vista
 
-        return view('products.index');
+        return view('products.index')->with('products', $products);
     }
 
     public function create(){
